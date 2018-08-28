@@ -15,6 +15,8 @@ const counter = (state = initialState, action) => {
       return { ...state, value: state.value - 1 };
     case "INCREMENTINDEX":
       return { ...state, index: state.index + 1 };
+    case "DECREMENTINDEX":
+      return { ...state, index: state.index - 1 };
     default:
       return state;
   }
@@ -25,7 +27,8 @@ const ReactSample = ({
   value = initialState,
   onIncrement,
   onIncrementIndex,
-  onDecrement
+  onDecrement,
+  onDecrementIndex
 }) => (
   <div>
     <h1>value : {value.value}</h1>
@@ -34,6 +37,7 @@ const ReactSample = ({
     <button onClick={onDecrement}>-</button>
     <br />
     <button onClick={onIncrementIndex}>+Index</button>
+    <button onClick={onDecrementIndex}>-Index</button>
   </div>
 );
 
@@ -45,6 +49,7 @@ const render = () => {
       onIncrement={() => store.dispatch({ type: "INCREMENT" })}
       onDecrement={() => store.dispatch({ type: "DECREMENT" })}
       onIncrementIndex={() => store.dispatch({ type: "INCREMENTINDEX" })}
+      onDecrementIndex={() => store.dispatch({ type: "DECREMENTINDEX" })}
     />,
     rootElement
   );

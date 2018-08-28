@@ -1,26 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore } from "redux";
-//import { Provider } from "react-redux";
+import { counter, initialState } from "./reducer";
 import "./styles.css";
-const initialState = {
-  index: 0,
-  value: 0
-};
-const counter = (state = initialState, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return { ...state, value: state.value + 1 };
-    case "DECREMENT":
-      return { ...state, value: state.value - 1 };
-    case "INCREMENTINDEX":
-      return { ...state, index: state.index + 1 };
-    case "DECREMENTINDEX":
-      return { ...state, index: state.index - 1 };
-    default:
-      return state;
-  }
-};
+
 const store = createStore(counter);
 
 const ReactSample = ({
